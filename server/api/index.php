@@ -39,7 +39,10 @@ function result($params) {
             case 'updateNews': return $app->updateNews($params); // Загуляев POST (уметь скрывать баннер)
             case 'createRequest': return $app->createRequest($params); // Гилазиев
             case 'getRequests': return $app->getRequests($params); // Кожевников
-            case 'answerToRequest': return $app->answerToRequest($params); // Широбоков
+            case 'answerToRequest': return $app->answerToRequest($params); // Широбоко
+
+            case 'addMap': return $app -> addMap($params);
+            
 
             default: return ['error' => 102];
         }

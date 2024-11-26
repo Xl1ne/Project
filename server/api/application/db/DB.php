@@ -1,5 +1,4 @@
 <?php
-
 class DB {
     private $pdo;
 
@@ -55,5 +54,13 @@ class DB {
 
     public function registration($login, $password, $name, $role) {
         $this->execute("INSERT INTO users (login, password, name, role) VALUES (?, ?, ?, ?)", [$login, $password, $name, $role]);
+    }
+
+    public function getMaps() {
+        return $this->queryAll("SELECT * FROM maps");
+    }
+
+    public function addMap($streetName, $coordinates, $houses) {
+        $this->execute("INSERT INTO maps (street_name, coordinates, houses) VALUES (?, ?, ?)", [$streetName, json_encode($coordinates), json_encode($houses)]);
     }
 }

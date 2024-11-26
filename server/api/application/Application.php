@@ -10,6 +10,7 @@ class Application {
         $this->user = new User($db);
         $this->chat = new Chat($db);
         $this->news = new News($db);
+        $this->db = $db;
     }
 
     public function login($params) {
@@ -61,5 +62,16 @@ class Application {
 
     public function getBanners($params) {
         return $this->news->getBanners();
+    }
+
+    public function getMaps($params) {
+        return $this->db->getMaps();
+    }
+
+    public function addMap($params) {
+        if ($params['streetName'] && $params['coordinates'] && $params['houses']) {
+            return $this->db->addMap($params['streetName'], $params['coordinates'], $params['houses']);
+        }
+        return ['error' => 242];
     }
 }
